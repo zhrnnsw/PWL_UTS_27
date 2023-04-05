@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        
+        Schema::table('users', function(Blueprint $table){
+            $table -> string('username', 25)->after('id')->nullable()->unique();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        
+        Schema::table('users', function(Blueprint $table){
+            $table->dropColumn('username');
+        });
     }
 };
